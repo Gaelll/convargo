@@ -141,6 +141,26 @@ const actors = [{
   }]
 }];
 
+function shippingPrice(){
+  for(var i = 0; i < deliveries.length; i++)
+  {
+    for(var j = 0; j < truckers.length; j++)
+    {
+      if(deliveries[i].truckerId == truckers[j].id)
+      {
+        var distance = deliveries[i].distance * truckers[i].pricePerKm;
+        var volume = deliveries[i].volume * truckers[i].pricePerVolume;
+
+        var priceFinal = distance + volume;
+        deliveries[i].price = priceFinal;
+      }
+      
+    }
+
+  }
+}
+
+shippingPrice();
 console.log(truckers);
 console.log(deliveries);
 console.log(actors);
