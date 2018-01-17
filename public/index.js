@@ -209,10 +209,32 @@ function commission(){
   }
 }
 
+function commission2(){
+  for(var i = 0; i < deliveries.length; i++)
+  {
+    if(deliveries[i].options.deductibleReduction == true)
+    {
+      var commissionG = 0.30 * deliveries[i].price;
+      deliveries[i].commission.insurance = commissionG/2;
+      deliveries[i].commission.treasury = Math.ceil(deliveries[i].distance/500);
+      deliveries[i].commission.convargo = (commissionG + deliveries[i].volume) - (deliveries[i].commission.insurance + deliveries[i].commission.treasury);
+    }
+    else
+    {
+      var commissionG = 0.30 * deliveries[i].price;
+      deliveries[i].commission.insurance = commissionG/2;
+      deliveries[i].commission.treasury = Math.ceil(deliveries[i].distance/500);
+      deliveries[i].commission.convargo = commissionG - (deliveries[i].commission.insurance + deliveries[i].commission.treasury);
+    }
+  }
+}
+
 
 //shippingPrice();
 shippingPrice2();
-commission();
+//commission();
+commission2();
+
 console.log(truckers);
 console.log(deliveries);
 console.log(actors);
