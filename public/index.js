@@ -148,8 +148,8 @@ function shippingPrice(){
     {
       if(deliveries[i].truckerId == truckers[j].id)
       {
-        var distance = deliveries[i].distance * truckers[i].pricePerKm;
-        var volume = deliveries[i].volume * truckers[i].pricePerVolume;
+        var distance = deliveries[i].distance * truckers[j].pricePerKm;
+        var volume = deliveries[i].volume * truckers[j].pricePerVolume;
 
         var priceFinal = distance + volume;
         deliveries[i].price = priceFinal;
@@ -160,7 +160,44 @@ function shippingPrice(){
   }
 }
 
+/*function shippingPrice2(){
+  for(var i = 0; i < deliveries.length; i++)
+  {
+    for(var j = 0; j < truckers.length; j++)
+    {
+      if(deliveries[i].truckerId == truckers[j].id)
+      {
+        if(deliveries[i].volume >= 5 && deliveries[i].volume < 10)
+        {
+          truckers[j].pricePerVolume = truckers[j].pricePerVolume * 0.90;
+        }
+        else if(deliveries[i].volume >= 10 && deliveries[i].volume < 25)
+        {
+          truckers[j].pricePerVolume = truckers[j].pricePerVolume * 0.70;
+        }
+        else if(deliveries[i].volume >= 25)
+        {
+          truckers[j].pricePerVolume = truckers[j].pricePerVolume * 0.50;
+        }
+        else
+        {
+
+        }
+
+        var distance = deliveries[i].distance * truckers[j].pricePerKm;
+        var volume = deliveries[i].volume * truckers[j].pricePerVolume;
+
+        var priceFinal = distance + volume;
+        deliveries[i].price = priceFinal;
+      }
+      
+    }
+
+  }
+}*/
+
 shippingPrice();
+//shippingPrice2();
 console.log(truckers);
 console.log(deliveries);
 console.log(actors);
