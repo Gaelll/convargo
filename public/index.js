@@ -218,6 +218,7 @@ function commission2(){
       deliveries[i].commission.insurance = commissionG/2;
       deliveries[i].commission.treasury = Math.ceil(deliveries[i].distance/500);
       deliveries[i].commission.convargo = (commissionG + deliveries[i].volume) - (deliveries[i].commission.insurance + deliveries[i].commission.treasury);
+      deliveries[i].price += deliveries[i].volume;
     }
     else
     {
