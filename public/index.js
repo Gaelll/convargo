@@ -160,7 +160,7 @@ function shippingPrice(){
   }
 }
 
-/*function shippingPrice2(){
+function shippingPrice2(){
   for(var i = 0; i < deliveries.length; i++)
   {
     for(var j = 0; j < truckers.length; j++)
@@ -194,10 +194,10 @@ function shippingPrice(){
     }
 
   }
-}*/
+}
 
-shippingPrice();
-//shippingPrice2();
+//shippingPrice();
+shippingPrice2();
 console.log(truckers);
 console.log(deliveries);
 console.log(actors);
