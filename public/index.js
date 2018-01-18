@@ -230,11 +230,47 @@ function commission2(){
   }
 }
 
+function payTheActors(){
+  for(var i = 0; i < actors.length; i++)
+  {
+    for(var j = 0; j < deliveries.length; j++)
+    {
+      for(var k = 0; k < actors[i].payment.length; k++)
+      {
+        if(actors[i].deliveryId == deliveries[j].id || actors[i].rentalId == deliveries[j].id)
+        {
+          if(actors[i].payment[k].who == 'shipper')
+          {
+            actors[i].payment[k].amount = deliveries[j].price;
+          }
+          else if(actors[i].payment[k].who == 'owner')
+          {
+            actors[i].payment[k].amount = deliveries[j].price - (0.30 * deliveries[j].price);
+          }
+          else if(actors[i].payment[k].who == 'insurance')
+          {
+            actors[i].payment[k].amount = deliveries[j].commission.insurance;
+          }
+          else if(actors[i].payment[k].who == 'treasury')
+          {
+            actors[i].payment[k].amount = deliveries[j].commission.treasury;
+          }
+          else if(actors[i].payment[k].who == 'convargo')
+          {
+            actors[i].payment[k].amount = deliveries[j].commission.convargo;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 //shippingPrice();
 shippingPrice2();
 //commission();
 commission2();
+payTheActors();
 
 console.log(truckers);
 console.log(deliveries);
