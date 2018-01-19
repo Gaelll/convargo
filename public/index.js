@@ -74,7 +74,7 @@ var deliveries = [{
 //list of actors for payment
 //useful from exercise 5
 const actors = [{
-  'deliveryId': 'bba9500c-fd9e-453f-abf1-4cd8f52af377',
+  'rentalId': 'bba9500c-fd9e-453f-abf1-4cd8f52af377',
   'payment': [{
     'who': 'shipper',
     'type': 'debit',
@@ -237,7 +237,7 @@ function payTheActors(){
     {
       for(var k = 0; k < actors[i].payment.length; k++)
       {
-        if(actors[i].deliveryId == deliveries[j].id || actors[i].rentalId == deliveries[j].id)
+        if(actors[i].rentalId == deliveries[j].id)
         {
           if(actors[i].payment[k].who == 'shipper')
           {
